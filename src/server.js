@@ -11,7 +11,7 @@ const userService = `http://localhost:${USER_SERVICE_PORT}`;
 const init = async () => {
   const server = Hapi.server({
     port: 3000,
-    host: 'localhost',
+    host: process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0',
   });
 
   const got = (await import('got')).default; // Import dinamis
